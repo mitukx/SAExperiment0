@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.optimize import linear_sum_assignment
 
-# --- 設定 ---
+
 DEVICE = torch.device("cpu")
 print(f"Running on: {DEVICE}")
 
-# 再現性のため固定
+#再現性のため固定
 torch.manual_seed(42)
 np.random.seed(42)
 
@@ -40,20 +40,20 @@ def generate_synthetic_data(n_samples, n_features, input_dim, sparsity_prob):
     data = torch.matmul(coeffs, true_features.T)
     return data, true_features
 
-# ▼▼▼ 改良された評価関数（0か1か判定） ▼▼▼
+#
 def calculate_recovery_rate(sae_decoder, true_features, threshold=0.9):
     with torch.no_grad():
         W_est = F.normalize(sae_decoder.weight, p=2, dim=0).T
         W_true = true_features.T
         
-        # 類似度行列
+        #類似度行列
         similarity_matrix = torch.matmul(W_est, W_true.T).abs().cpu().numpy()
         
-        # 最適マッチング
+        #最適マッチング
         row_ind, col_ind = linear_sum_assignment(similarity_matrix, maximize=True)
         matched_sims = similarity_matrix[row_ind, col_ind]
         
-        # 閾値判定: 0.9 以上なら「成功(1)」, それ未満は「失敗(0)」
+        #閾値判定
         success_count = (matched_sims > threshold).sum()
         total_features = len(W_true)
         
@@ -83,7 +83,7 @@ def run_single_experiment(n_samples, sparsity_prob):
             optimizer.step()
             model.apply_decoder_constraint()
             
-    # ここで新しい評価関数を呼ぶ
+    #ここで新しい評価関数を呼ぶ
     return calculate_recovery_rate(model.decoder, true_features, threshold=0.9)
 
 if __name__ == "__main__":
@@ -99,11 +99,11 @@ if __name__ == "__main__":
             print(f"Testing: Sparsity={sp}, Samples={n} ... ", end="")
             score = run_single_experiment(n, sp)
             results[i, j] = score
-            # ログ表示が変わっているか確認！
+            #ログ表示が変わっているか確認！
             print(f"RecoveryRate={score:.2f}") 
 
     plt.figure(figsize=(10, 8))
-    # vmin=0, vmax=1 で固定し、色の対比を最大化
+    #vmin=0, vmax=1 で固定し、色の対比を最大化
     sns.heatmap(results, annot=True, fmt=".2f", 
                 xticklabels=sample_list, yticklabels=sparsity_list, 
                 cmap="viridis", vmin=0, vmax=1)
