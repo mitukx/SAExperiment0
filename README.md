@@ -30,7 +30,7 @@ Sparse Autoencoders (SAE) の学習ダイナミクスを、平均場理論（Mea
 
 これは、SAEの学習が滑らかな改善ではなく、ある情報量の閾値を超えた瞬間に構造を捉える相転移現象であることを強く示唆しています。
 
-![Phase Transition Heatmap](images/sae_phase_transition_refined.png)
+![Phase Transition Heatmap](images/sae_phase_transition_final.png)
 *(Fig 1. 復元成功率のヒートマップ。左上の高スパース領域では低サンプルでも学習が成功しており、圧縮センシングの理論予測と定性的に一致している)*
 
 ### 2. L1正則化の特異点は不可避 (Singularity is Essential)
