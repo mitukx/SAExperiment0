@@ -17,7 +17,7 @@ Sparse Autoencoders (SAE) の学習挙動を、平均場理論（Mean-Field Theo
 実験の結果、Huber損失ではパラメータ $\delta$ を $10^{-3}$ まで小さくしても、L1正則化と比較して特徴復元スコア (MCC) が有意に低下する現象が確認されました（Fig 1）。
 これは、SAEの特徴獲得において $z=0$ での微分不可能性（特異点）が重要な役割を果たしており、滑らかな勾配流による近似ではダイナミクスを正確に記述できない可能性を示唆しています。
 
-![Comparison of z-distribution](z_distribution_comparison.png)
+![Comparison of z-distribution](images/z_distribution_comparison.png)
 *(Fig 1. L1正則化とHuber損失適用後のニューロン発火分布の違い。Huberでは0付近の圧縮が不十分であることがわかる)*
 
 ### 2. 相転移 (Phase Transition)
