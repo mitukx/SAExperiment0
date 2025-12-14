@@ -24,7 +24,7 @@ Sparse Autoencoders (SAE) の学習挙動を、平均場理論（Mean-Field Theo
 サンプル数 $N$ とデータのスパース度 $p$ を変化させた際の特徴復元率を可視化しました。
 学習が成功する領域と失敗する領域の間には明確な境界が存在し、必要なサンプル数はスパース度に対して非線形に増加する傾向が見られました。
 
-![Phase Transition Heatmap](sae_phase_transition.png)
+![Phase Transition Heatmap](images/sae_phase_transition.png)
 *(Fig 2. サンプル数とスパース度における復元率のヒートマップ)*
 
 ### 3. 平均場極限への収束
