@@ -17,21 +17,21 @@ Sparse Autoencoders (SAE) の学習挙動を、平均場理論（Mean-Field Theo
 実験の結果、Huber損失ではパラメータ $\delta$ を $10^{-3}$ まで小さくしても、L1正則化と比較して特徴復元スコア (MCC) が有意に低下する現象が確認されました（Fig 1）。
 これは、SAEの特徴獲得において $z=0$ での微分不可能性（特異点）が重要な役割を果たしており、滑らかな勾配流による近似ではダイナミクスを正確に記述できない可能性を示唆しています。
 
-![Comparison of z-distribution](./images/z_distribution_comparison.png)
+![Comparison of z-distribution](z_distribution_comparison.png)
 *(Fig 1. L1正則化とHuber損失適用後のニューロン発火分布の違い。Huberでは0付近の圧縮が不十分であることがわかる)*
 
 ### 2. 相転移 (Phase Transition)
 サンプル数 $N$ とデータのスパース度 $p$ を変化させた際の特徴復元率を可視化しました。
 学習が成功する領域と失敗する領域の間には明確な境界が存在し、必要なサンプル数はスパース度に対して非線形に増加する傾向が見られました。
 
-![Phase Transition Heatmap](./images/sae_phase_transition.png)
+![Phase Transition Heatmap](sae_phase_transition.png)
 *(Fig 2. サンプル数とスパース度における復元率のヒートマップ)*
 
 ### 3. 平均場極限への収束
 隠れ層のニューロン数 $m$ を増加させた際、復元率がどのように変化するかを確認しました。
 入力次元 $d$ に対して $m \approx 4d$ (Width Ratio 4) 付近で性能が飽和し、それ以上幅を広げても挙動が安定していることから、有限幅のモデルが平均場極限で良く近似できることを支持する結果となりました。
 
-![Width Scaling](./images/sae_width_scaling.png)
+![Width Scaling](sae_width_scaling.png)
 *(Fig 3. ネットワーク幅の拡大に伴う復元率の収束)*
 
 ## 実行方法 (Usage)
