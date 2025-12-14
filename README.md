@@ -31,7 +31,7 @@ Sparse Autoencoders (SAE) の学習挙動を、平均場理論（Mean-Field Theo
 隠れ層のニューロン数 $m$ を増加させた際、復元率がどのように変化するかを確認しました。
 入力次元 $d$ に対して $m \approx 4d$ (Width Ratio 4) 付近で性能が飽和し、それ以上幅を広げても挙動が安定していることから、有限幅のモデルが平均場極限で良く近似できることを支持する結果となりました。
 
-![Width Scaling](sae_width_scaling.png)
+![Width Scaling](images/sae_width_scaling.png)
 *(Fig 3. ネットワーク幅の拡大に伴う復元率の収束)*
 
 ## 実行方法 (Usage)
